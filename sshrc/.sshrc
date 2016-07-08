@@ -1,0 +1,96 @@
+source /etc/profile
+source /etc/profile.d/colorls.sh
+stty erase "^?"
+
+#set -x
+
+export VIMINIT="let \$MYVIMRC='$SSHHOME/.sshrc.d/vimrc_single' | source \$MYVIMRC"
+
+function u {
+    ups=""
+    for i in $(seq 1 $1)
+    do
+        ups=$ups"../"
+    done
+    cd $ups
+}
+
+bind "set completion-ignore-case on"
+bind "set show-all-if-ambiguous on"
+
+alias ls='ls --color=auto' 2>/dev/null
+
+# Amazon host specific
+
+function runC {
+    sudo /apollo/bin/runCommand -e $1 -a $2
+}
+
+service=`hostname | awk ' BEGIN { FS = "-" } { print $2 }'`
+
+if [ "$service" = maestro ]; then
+    service_env=maestro;
+elif [ "$service" = asterix ]; then
+    service_env=WoodchipperAsterixService;
+elif [ "$service" = obelix ]; then
+    if [[ `hostname` =~ "beta" ]]; then
+        service_env=obelix;
+    else
+        service_env=WoodchipperObelixDaemon;
+    fi
+elif [ "$service" = fulliautomatix ]; then
+    service_env=WoodchipperFulliautomatix;
+elif [ "$service" = getafix ]; then 
+    service_env=WoodchipperGetafix;
+elif [ "$service" = vitalstatistix ]; then
+    service_env=WoodchipperVitalstatistix;
+elif [ "$service" = impedimenta ]; then
+    service_env=impedimenta;
+fi
+
+if [ -n "$service_env" ]; then
+    alias logf="cd /apollo/env/$service_env/var/output/logs";
+
+    function activate {
+      runC $service_env Activate
+    }
+
+    function deactivate {
+      runC $service_env Deactivate
+    }
+fi
+
+
+if [ "$service" = timberfs ]; then
+    export PS1="> ";
+    alias bark='/apollo/env/BarkCLI/bin/bark'
+else
+    export PS1="\e[1;36m\w\e[m> ";
+fi
+
+# For Asterix CLI
+if [[ `hostname` =~ "amazon.com"$ ]]; then
+  hostclass=`/apollo/bin/getmyhostclass`
+else # substrate hosts
+  cd /
+fi
+if [[ "$hostclass" =~ ^"WOODCHIPPER-OPS" ]]; then
+  endpoint=`echo $hostclass | awk ' BEGIN { FS = "-" } { print $3 }' | tr 'A-Z' 'a-z' `
+  prod="prod"
+  if [ "$endpoint" = iad ]; then
+    region="us-east-1"
+  elif [ "$endpoint" = sfo ]; then
+    region="us-west-1"
+  elif [ "$endpoint" = pdx ]; then
+    region="us-west-2"
+  elif [ "$endpoint" = beta ]; then
+    region="us-west-2"
+    prod="beta"
+  fi
+
+  if [ -n "$region" ]; then
+    alias cli="/apollo/env/asterix_cli//bin/asterix-cli -r \"$region\" -o \"aws.woodchipper."$prod".iam.asterix_client_woodchipper\" -e \"$endpoint\""
+  fi
+fi
+
+#set +x

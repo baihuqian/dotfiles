@@ -1,0 +1,139 @@
+" VIM configuration
+"   -- single file version
+"   -- for server use
+" Author: Baihu Qian
+" Email: baihuqian@gmail.com
+" Date: Aug 4th, 2015 
+" Version: 2.0
+"
+"==============
+set nocompatible                    " unleashes VIM's power
+
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+    set fileencodings=utf-8,latin1
+endif
+
+syntax on                           " enable syntax highlighting
+set backspace=indent,eol,start      " fix backspace issue
+set whichwrap+=<,>,h,l,[,]          " enable cursor wrap
+set history=50
+set autoread                        " automatically reload changed file
+set ttyfast
+
+set title                           " show title in terminal
+set scrolloff=7                     " line below/above cursor
+set winwidth=79                     " window width
+set ruler
+set showcmd
+set showmode
+set mouse=a
+set cursorline
+"set nowrap
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" No backup and swapfile
+set nobackup
+set noswapfile
+
+"set completeopt=longest, menu
+
+" set encoding=utf-8
+" set ffs=unix,dos,mac
+
+set viminfo="NONE"                  " do not use viminfo
+
+" 代码折叠
+set foldenable
+" 折叠方法
+" manual    手工折叠
+" indent    使用缩进表示折叠
+" expr      使用表达式定义折叠
+" syntax    使用语法定义折叠
+" diff      对没有更改的文本进行折叠
+" marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
+set foldmethod=indent
+set foldlevel=99
+
+" Map fold key to space
+nmap <space> za
+
+
+" Autocompletion
+" set completeopt=longest,menu
+" <Enter> after selection won't create a new line
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Automatically reload changed file
+set autoread
+
+" Mute error bell
+set novisualbell
+
+" Map keys
+" Use w!! to write the file as sudo
+cmap w!! w !sudo tee % >/dev/null
+
+function! ToggleMouse()
+    if !exists("s:old_mouse")
+        let s:old_mouse = "a"
+    endif
+
+    if &mouse == ""
+        let &mouse = s:old_mouse
+        echo "Mouse enabled (" . &mouse . ")"
+    else
+        let s:old_mouse = &mouse
+        let &mouse=""
+        echo "Mouse disabled"
+    endif
+endfunc
+map <F3> :call ToggleMouse()<CR>
+
+"Toggle paste mode
+set pastetoggle=<F5>
+
+map <F6> :set wrap!<CR>
+
+if has("autocmd")
+  augroup redhat
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
+  augroup END
+endif
+
+if has("cscope") && filereadable("/usr/bin/cscope")
+   set csprg=/usr/bin/cscope
+   set csto=0
+   set cst
+   set nocsverb
+   " add any database in current directory
+   if filereadable("cscope.out")
+      cs add cscope.out
+   " else add database pointed to by environment
+   elseif $CSCOPE_DB != ""
+      cs add $CSCOPE_DB
+   endif
+   set csverb
+endif
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+if &term=="xterm"
+     set t_Co=8
+     set t_Sb=^[[4%dm
+     set t_Sf=^[[3%dm
+endif
