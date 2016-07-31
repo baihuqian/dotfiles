@@ -72,6 +72,7 @@ alias gca="git commit --amend"
 alias gm="git merge"
 alias gpl="git pull"
 alias gplr="git pull -r"
+alias gps="git push"
 alias gpsd="git push --delete origin"
 alias gs="git status"
 alias gsh="git show"
@@ -84,13 +85,6 @@ alias gd="git diff"
 alias gdm="git diff origin/mainline"
 alias grh="git reset --hard"
 alias gcp="git cherry-pick"
-function gps {
-  if [ $# -eq 1 ]; then
-    git push
-  else
-    git push origin $1:mainline
-  fi
-}
 
 # Common alias
 alias zconf="vim ~/.zshrc"
