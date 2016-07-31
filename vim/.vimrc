@@ -21,17 +21,16 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 "---------------------START OF PLUGIN--------------------------------
 " Themes
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized' "Solarized color for vim https://github.com/altercation/vim-colors-solarized
 Plugin 'tomasr/molokai'
-Plugin 'bling/vim-airline'
+Plugin 'tomtom/tcomment_vim' "Toggle comments: https://github.com/tomtom/tcomment_vim
+Plugin 'vim-airline/vim-airline' "Status bar
 " YouCompleteMe
 if has('mac')
   Plugin 'Valloric/YouCompleteMe'
 endif
 " Autocompletion for quotes, parens, brackets, etc.
 Plugin 'Raimondi/delimitMate'
-" Sublime Text style multiple selection
-Plugin 'terryma/vim-multiple-cursors'
 " File browser
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
