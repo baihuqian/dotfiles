@@ -184,7 +184,8 @@ fi
 
 # Dev Box specific
 if [[ $(hostname) == $DEVBOX ]]; then
-  source $DOTFILE/zsh/devdskzshrc
+  source $DOTFILE/zsh/devdskzshrc.sh
+  source $DOTFILE/zsh/brazil_util.sh
 fi # end of DEVBOX setup
 
 source $ZSH/oh-my-zsh.sh
