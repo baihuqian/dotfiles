@@ -8,7 +8,6 @@ alias bbcr="bb clean && bb release"
 
 ## Create workspace and download the package
 function createws() {
-cd /workplace/$USER
     brazil ws --create -n $1
     cd $1
 }
@@ -24,5 +23,3 @@ echo "Do you want to checkout package $1 at `pwd`? [yN]"
 
 alias usevs="brazil ws use -vs"
 alias syncvs="brazil ws sync --md"
-alias pullws="checkkinit brazil ws sync --metadata && brazil ws --pull --rebase"
-alias pbws="checkkinit brazil ws sync --metadata && brazil ws --pull --rebase && brazil-recursive-cmd-parallel --allPackages brazil-build"
