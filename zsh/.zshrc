@@ -121,11 +121,26 @@ fi
 # OS X specific
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Plugins:
+    # aws: add shell completion of aws commands
+    # brew: add shell completion of brew commands, and alias brews="brew list -1"
+    # osx:
+    # | Command         | Description                                      |
+    # | :-------------- | :----------------------------------------------- |
+    # | `tab`           | Open the current directory in a new tab          |
+    # | `ofd`           | Open the current directory in a Finder window    |
+    # | `pfd`           | Return the path of the frontmost Finder window   |
+    # | `pfs`           | Return the current Finder selection              |
+    # | `cdf`           | `cd` to the current Finder directory             |
+    # | `pushdf`        | `pushd` to the current Finder directory          |
+    # | `quick-look`    | Quick-Look a specified file                      |
+    # | `man-preview`   | Open a specified man page in Preview app         |
+    # | `showfiles`     | Show hidden files                                |
+    # | `hidefiles`     | Hide the hidden files                            |
     # autojump: use j key to jump anywhere
     # zsh-syntax-highlighting: highlight shell syntax
     # Install zsh-syntax-highlighting:
     # cd ~/.oh-my-zsh/custom/plugins/; git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-    plugins=(autojump zsh-syntax-highlighting)
+    plugins=(aws brew osx autojump zsh-syntax-highlighting)
 
     # Path with brew installation
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -138,7 +153,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     }
 
     # rbenv
-    if brew list | grep rbenv > /dev/null; then
+    if brew list -1 | grep rbenv > /dev/null; then
         eval "$(rbenv init -)"
     fi
 
