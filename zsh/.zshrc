@@ -1,4 +1,3 @@
-setopt COMPLETE_IN_WORD
 setopt CORRECT
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -138,7 +137,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
     }
 
-# Hashes
+    # rbenv
+    if brew list | grep rbenv > /dev/null; then
+        eval "$(rbenv init -)"
+    fi
+
+    # Hashes
     hash -d doc=~/Documents
     hash -d dow=~/Downloads
 fi # end of OS X specific
