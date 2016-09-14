@@ -1,8 +1,8 @@
 " VIM configuration
 " Author: Baihu Qian
 " Email: baihuqian@gmail.com
-" Date: Sept 24th, 2015
-" Version: 2.1
+" Date: Sept 14th, 2016
+" Version: 2.2
 
 "====================================================================
 " enable VIM's power
@@ -23,7 +23,6 @@ Plugin 'gmarik/Vundle.vim'
 " Themes
 Plugin 'altercation/vim-colors-solarized' "Solarized color for vim https://github.com/altercation/vim-colors-solarized
 Plugin 'tomasr/molokai'
-Plugin 'tomtom/tcomment_vim' "Toggle comments: https://github.com/tomtom/tcomment_vim
 Plugin 'vim-airline/vim-airline' "Status bar
 " YouCompleteMe
 if has('mac')
@@ -43,7 +42,10 @@ Plugin 'majutsushi/tagbar'
 " Sublime text style file opener(using Ctrl + P)
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kien/ctrlp.vim'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go' " Go support
+Plugin 'ervandew/supertab' " Tab completion
+Plugin 'jiangmiao/auto-pairs' " Pair parenthesis
+Plugin 'scrooloose/nerdcommenter'
 
 "---------------------END OF PLUGIN--------------------------------
 call vundle#end()            " required
@@ -76,6 +78,28 @@ let g:easytags_suppress_ctags_warning = 1
 " Theme configuration
 set background=dark         " toggle to "light" for light colorsheme
 colorscheme molokai
+
+" NERDCommenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/'  }  }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
 
 " enable syntax highlighting
 syntax on
