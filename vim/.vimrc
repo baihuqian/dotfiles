@@ -43,6 +43,7 @@ Plugin 'majutsushi/tagbar'
 " Sublime text style file opener(using Ctrl + P)
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kien/ctrlp.vim'
+Plugin 'fatih/vim-go'
 
 "---------------------END OF PLUGIN--------------------------------
 call vundle#end()            " required
