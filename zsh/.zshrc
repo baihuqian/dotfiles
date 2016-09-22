@@ -182,7 +182,7 @@ if [[ $(hostname) == $UBUNTU ]]; then
     alias ssha="ssh -A $DEVBOX"
 
     export VMNAME="RHEL5 64-bit desktop"
-    alias stopvm="VBoxManage controlvm $VMNAME savestate"
+    alias stopvm="VBoxManage controlvm \"$VMNAME\" savestate"
     function reboot() {
         stopvm
         sudo shutdown -r now
