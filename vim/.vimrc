@@ -24,6 +24,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized' "Solarized color for vim https://github.com/altercation/vim-colors-solarized
 Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline' "Status bar
+Plugin 'vim-airline/vim-airline-themes'
 " YouCompleteMe
 if has('mac')
   Plugin 'Valloric/YouCompleteMe'
@@ -46,14 +47,20 @@ Plugin 'fatih/vim-go' " Go support
 Plugin 'ervandew/supertab' " Tab completion
 Plugin 'jiangmiao/auto-pairs' " Pair parenthesis
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'Yggdroot/indentLine' " Display the indention levels with thin vertical lines
 
 "---------------------END OF PLUGIN--------------------------------
 call vundle#end()            " required
 filetype plugin indent on    " required
 "===================================================================
 " Plugin configuration
+" airline
+set laststatus=2 " Status bar to show all the time
+let g:airline_powerline_fonts = 1 " need to install fonts, and set the non-ASCII fonts in iTerm2 to fonts-for-powerline
+let g:airline_theme='solarized'
+
 " NERDTree/tabs
-let g:nerdtree_tabs_open_on_console_startup = 0     " 1 to enable NERDTree on startup
+let g:nerdtree_tabs_open_on_console_startup = 0 " 1 to enable NERDTree on startup
 
 " Syntastic
 let g:syntastic_error_symbol = '✘'
@@ -80,6 +87,7 @@ set background=dark         " toggle to "light" for light colorsheme
 colorscheme molokai
 
 " NERDCommenter
+filetype plugin on
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -113,14 +121,10 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,h,l,[,]
 
 " set apparance 
-set title
 set scrolloff=7		" lines below/above cursor
 set winwidth=79		" window width 
 set number 		    " show line number
 set relativenumber  " show relative line number
-set ruler 		    " show the cursor position
-set showcmd 		" display incomplete commands on lower-right corner
-set showmode        " display vim movde on lower-left corner
 set mouse=a 		" enable mouse
 " set cursorcolumn	" highlight current column
 set cursorline		" highlight current line 
@@ -215,6 +219,7 @@ function! HideNumber()
     endif
     set number?
 endfunc
+" F1 to toggle line number
 map <F1> :call HideNumber()<CR>
 
 " Toggle between relative number and absolute line number
