@@ -119,9 +119,10 @@ alias gdm="git diff origin/mainline"
 alias gcp="git cherry-pick"
 function grh () {
   read "ans?git reset --hard?(yN)"
-  if [[ "$ans" =~ ^[Yy]$ ]]; then
-    git reset --hard
-  fi
+  case $ans in
+    Y|y ) brazil ws use -p $1;;
+    * ) ;;
+  esac
 }
 
 # Common alias
