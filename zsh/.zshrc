@@ -99,9 +99,9 @@ u () {
 }
 
 # Time conversion
-epochdate() { /bin/date -ud "$@" +%s }
+epochdate() { date -ud "$@" +%s }
 
-humandate() { /bin/date -ud @"$@" }
+humandate() { date -ud @"$@" }
 
 # tmux integration with iTerm
 alias tmux='tmux -CC'
@@ -140,7 +140,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # zsh-syntax-highlighting: highlight shell syntax
     # Install zsh-syntax-highlighting:
     # cd ~/.oh-my-zsh/custom/plugins/; git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
-    plugins=(aws brew osx autojump zsh-syntax-highlighting)
+    plugins=(aws brew osx autojump vi-mode zsh-syntax-highlighting)
 
     # Path with brew installation
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -178,7 +178,7 @@ fi
 
 # Ubuntu
 if [[ $(hostname) == $UBUNTU ]]; then
-    plugins=(autojump zsh-syntax-highlighting)
+    plugins=(autojump vi-mode zsh-syntax-highlighting)
     alias ssha="ssh -A $DEVBOX"
 
     export VMNAME="RHEL5 64-bit desktop"
