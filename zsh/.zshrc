@@ -195,6 +195,8 @@ if [[ $(hostname) == "ac87a31a030f" ]]; then
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
     export PATH="/apollo/env/SDETools/bin:$PATH:/Users/baihqian/bin" # brazil cli 2.0
     source $DOTFILE/zsh/brazil_util.sh
+
+    alias ssh2hc="ssh2hc --ssh 'sshrc'"
 fi
 
 # Ubuntu
