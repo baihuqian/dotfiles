@@ -282,3 +282,4 @@ fi # end of DEVBOX setup
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 source $ZSH/oh-my-zsh.sh
+export PATH=$PATH:/usr/local/bin  # MIDWAY PATH: Path changed for ssh
