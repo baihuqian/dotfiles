@@ -159,6 +159,12 @@ fi
 # Autoenv
 [ -s /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
 
+# configure fuzzy autocomplete on tab
+zstyle ':completion:*' matcher-list '' \
+'m:{a-z\-}={A-Z\_}' \
+'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+
 # OS X specific
 if [[ "$OSTYPE" == "darwin"* ]]; then
     plugins=(aws brew osx autojump vi-mode zsh-syntax-highlighting)
@@ -185,9 +191,13 @@ fi # end of OS X specific
 
 # Amazon laptop
 if [[ $(hostname) == "ac87a31a030f" ]]; then
+  function initssh {
+    mwinit
+    ssh-add
+  }
     # Create alias for fast ssh to desktop
-    alias ssha="/usr/local/bin/mssh -A $DEVBOX"
-    alias sshu="/usr/local/bin/mssh $UBUNTU" # Don't forward ssh-agent to Ubuntu
+    alias ssha="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -A $DEVBOX"
+    alias sshu="ssh $UBUNTU" # Don't forward ssh-agent to Ubuntu
     export SSH_AUTH_SOCK=$MSSH_AUTH_SOCK
     # go
     export GOROOT=/usr/local/opt/go/libexec
@@ -199,6 +209,9 @@ if [[ $(hostname) == "ac87a31a030f" ]]; then
     alias ssh2hc="ssh2hc --ssh 'sshrc'"
 
     hash -d ws=/Volumes/Brazil/workspace
+
+    alias pbws="brazil ws sync --metadata && brazil-recursive-cmd --allPackages git pull --rebase && brazil-recursive-cmd --allPackages brazil-build"
+    alias pullws="brazil ws sync --metadata && brazil-recursive-cmd --allPackages git pull --rebase"
 fi
 
 # Ubuntu
