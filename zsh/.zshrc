@@ -120,7 +120,7 @@ alias gcp="git cherry-pick"
 function grh () {
   read "ans?git reset --hard?(yN)"
   case $ans in
-    Y|y ) brazil ws use -p $1;;
+    Y|y ) git reset --hard ;;
     * ) ;;
   esac
 }
@@ -182,6 +182,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # rbenv
     if brew list -1 | grep rbenv > /dev/null; then
         eval "$(rbenv init -)"
+        export PATH="~/.rbenv/shims:$PATH"
+        [ -s ~/.rbenv/completions/rbenv.zsh ] && source ~/.rbenv/completions/rbenv.zsh
     fi
 
     # Hashes
@@ -192,17 +194,21 @@ fi # end of OS X specific
 # Amazon laptop
 if [[ $(hostname) == "ac87a31a030f" ]]; then
   function initssh {
+    killall ssh-agent
+    eval $(ssh-agent) > /dev/null
     mwinit
     ssh-add
   }
     # Create alias for fast ssh to desktop
     alias ssha="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -A $DEVBOX"
     alias sshu="ssh $UBUNTU" # Don't forward ssh-agent to Ubuntu
-    export SSH_AUTH_SOCK=$MSSH_AUTH_SOCK
+    # export SSH_AUTH_SOCK=$MSSH_AUTH_SOCK
     # go
     export GOROOT=/usr/local/opt/go/libexec
     export GOPATH=$HOME/.go
     export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+    # Brazil
     export PATH="$BRAZIL_CLI_BIN:$PATH:/Users/baihqian/bin" # brazil cli 2.0
     source $DOTFILE/zsh/brazil_util.sh
 
@@ -212,6 +218,18 @@ if [[ $(hostname) == "ac87a31a030f" ]]; then
 
     alias pbws="brazil ws sync --metadata && brazil-recursive-cmd --allPackages git pull --rebase && brazil-recursive-cmd --allPackages brazil-build"
     alias pullws="brazil ws sync --metadata && brazil-recursive-cmd --allPackages git pull --rebase"
+    
+    #Usage example: timberssh iad
+    function timberssh() {
+        region=$(echo $1 | tr 'a-z' 'A-Z')
+        sshenv -e  TimberFS/$region/Interconnect --ssh 'sshrc'
+    }
+    # CPAN
+    PATH="/Users/baihqian/perl5/bin${PATH:+:${PATH}}"; export PATH;
+    PERL5LIB="/Users/baihqian/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+    PERL_LOCAL_LIB_ROOT="/Users/baihqian/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+    PERL_MB_OPT="--install_base \"/Users/baihqian/perl5\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=/Users/baihqian/perl5"; export PERL_MM_OPT;
 fi
 
 # Ubuntu
@@ -298,3 +316,4 @@ fi # end of DEVBOX setup
 
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/bin  # MIDWAY PATH: Path changed for ssh
+
