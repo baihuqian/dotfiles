@@ -6,9 +6,6 @@ DOTFILE=$HOME/dotfiles
 # Look in ~/.oh-my-zsh/themes/
 ZSH_THEME="robbyrussell"
 
-export DEVBOX="baihqian.desktop.amazon.com"
-export UBUNTU="u5065f33c570156d5ef2f"
-
     # Plugins:
     # aws: add shell completion of aws commands
     # brew: add shell completion of brew commands, and alias brews="brew list -1"
@@ -149,16 +146,8 @@ alias tmux='tmux -CC'
 alias ta='tmux -CC attach'
 
 # Autojump
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-elif [[ $(hostname) == $UBUNTU ]]; then
-    [[ -s /home/local/ANT/baihqian/.autojump/etc/profile.d/autojump.sh ]] && source /home/local/ANT/baihqian/.autojump/etc/profile.d/autojump.sh
-    autoload -U compinit && compinit -u
-fi
-
-# Autoenv
-[ -s /usr/local/opt/autoenv/activate.sh ] && source /usr/local/opt/autoenv/activate.sh
-
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+#
 # configure fuzzy autocomplete on tab
 zstyle ':completion:*' matcher-list '' \
 'm:{a-z\-}={A-Z\_}' \
@@ -170,7 +159,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     plugins=(aws brew osx autojump vi-mode zsh-syntax-highlighting)
 
     # Path with brew installation
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+    export PATH="/usr/local/opt/ruby@2.7/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
     export MANPATH="usr/local/opt/coreutils/libexec/gnuman:/usr/local/man:$MANPATH"
 
     # Eject all mounted physical disks on OSX
@@ -179,89 +168,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
     }
 
-    # rbenv
-    if brew list -1 | grep rbenv > /dev/null; then
-        eval "$(rbenv init -)"
-        export PATH="~/.rbenv/shims:$PATH"
-        [ -s ~/.rbenv/completions/rbenv.zsh ] && source ~/.rbenv/completions/rbenv.zsh
-    fi
-
     # Hashes
     hash -d doc=~/Documents
     hash -d dow=~/Downloads
 fi # end of OS X specific
-
-# Amazon laptop
-if [[ $(hostname) == "ac87a31a030f" ]]; then
-  function initssh {
-    killall ssh-agent
-    eval $(ssh-agent) > /dev/null
-    mwinit
-    ssh-add
-  }
-    # Create alias for fast ssh to desktop
-    alias ssha="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -A $DEVBOX"
-    alias sshu="ssh $UBUNTU" # Don't forward ssh-agent to Ubuntu
-    # export SSH_AUTH_SOCK=$MSSH_AUTH_SOCK
-    # go
-    export GOROOT=/usr/local/opt/go/libexec
-    export GOPATH=$HOME/.go
-    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-    # Brazil
-    export PATH="$BRAZIL_CLI_BIN:$PATH:/Users/baihqian/bin" # brazil cli 2.0
-    source $DOTFILE/zsh/brazil_util.sh
-
-    alias ssh2hc="ssh2hc --ssh 'sshrc'"
-
-    hash -d ws=/Volumes/Brazil/workspace
-
-    alias pbws="brazil ws sync --metadata && brazil-recursive-cmd --allPackages git pull --rebase && brazil-recursive-cmd --allPackages brazil-build"
-    alias pullws="brazil ws sync --metadata && brazil-recursive-cmd --allPackages git pull --rebase"
-    
-    #Usage example: timberssh iad
-    function timberssh() {
-        region=$(echo $1 | tr 'a-z' 'A-Z')
-        sshenv -e  TimberFS/$region/Interconnect --ssh 'sshrc'
-    }
-    # CPAN
-    PATH="/Users/baihqian/perl5/bin${PATH:+:${PATH}}"; export PATH;
-    PERL5LIB="/Users/baihqian/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-    PERL_LOCAL_LIB_ROOT="/Users/baihqian/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-    PERL_MB_OPT="--install_base \"/Users/baihqian/perl5\""; export PERL_MB_OPT;
-    PERL_MM_OPT="INSTALL_BASE=/Users/baihqian/perl5"; export PERL_MM_OPT;
-fi
-
-# Ubuntu
-if [[ $(hostname) == $UBUNTU ]]; then
-    plugins=(autojump vi-mode zsh-syntax-highlighting)
-    alias ssha="ssh -A $DEVBOX"
-
-    export VMNAME="RHEL5 64-bit desktop"
-    alias stopvm="VBoxManage controlvm \"$VMNAME\" savestate"
-    function reboot() {
-        stopvm
-        sudo shutdown -r now
-    }
-
-    function startvm() {
-        nohup VBoxHeadless -s $VMNAME >/dev/null 2>&1 &
-    }
-
-    # Midway SSH credential
-    function restartssh() {
-        killall ssh-agent
-        eval `ssh-agent`
-        ssh-add -s libeToken.so
-    }
-    restartssh
-fi
-
-# Dev Box specific
-if [[ $(hostname) == $DEVBOX ]]; then
-  source $DOTFILE/zsh/devdskzshrc.sh
-  source $DOTFILE/zsh/brazil_util.sh
-fi # end of DEVBOX setup
 
 # Stuff comes with oh-my-zsh
 # Uncomment the following line to use case-sensitive completion.
@@ -317,3 +227,10 @@ fi # end of DEVBOX setup
 source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/usr/local/bin  # MIDWAY PATH: Path changed for ssh
 
+alias ssh2ubuntu='ssh ubuntu@192.168.10.2'
+alias ssh2ec2='ssh -i ~dow/unifi-controller.pem ubuntu@18.217.9.248'
+alias ssh62ec2='ssh -i ~dow/unifi-controller.pem ubuntu@2600:1f16:67b:a300:f77a:173:3ea2:b5d1'
+
+
+# Created by `pipx` on 2022-10-08 01:07:36
+export PATH="$PATH:/Users/baihu/.local/bin"

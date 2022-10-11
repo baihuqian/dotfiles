@@ -27,7 +27,7 @@ Plugin 'vim-airline/vim-airline' "Status bar
 Plugin 'vim-airline/vim-airline-themes'
 " YouCompleteMe
 if has('mac')
-  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'ycm-core/YouCompleteMe'
 endif
 " Autocompletion for quotes, parens, brackets, etc.
 Plugin 'Raimondi/delimitMate'

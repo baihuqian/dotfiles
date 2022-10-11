@@ -1,0 +1,72 @@
+aliases:
+  domane: b9758455
+
+components:
+  trek-domane-sl5: "Trek Domane SL5 Gen3"
+
+  bontrager-paradigm-sl-front: "Bontrager Paradigm SL"
+  bontrager-paradigm-sl-rear: "Bontrager Paradigm SL"
+  zipp-303-firecrest-front: "Zipp 303 Firecrest"
+  zipp-303-firecrest-rear: "Zipp 303 Firecrest"
+
+  bontrager-r3-hard-case-lite-tlr-1: "Bontrager R3 Hard Case Lite TLR"
+  bontrager-r3-hard-case-lite-tlr-2: "Bontrager R3 Hard Case Lite TLR"
+  panaracer-gravelking-slick-35: "Panaracer GravelKing Slick 35mm"
+  continental-gp5000: "Continental GP5000"
+  vittoria-corsa-next-1: "Vittoria Corsa N.EXT"
+  vittoria-corsa-next-2: "Vittoria Corsa N.EXT"
+
+  shimano-105-hg601: "Shimano 105 HG601 Chain"
+
+  shimano-pd-t8000: "Shimano PD-T8000 Pedals"
+
+  shimano-cs-r7000-11-34: "Shimano CS-R7000 11-34 Cassette"
+  shimano-cs-r7000-11-30: "Shimano CS-R7000 11-30 Cassette"
+
+  4iiii-precision-3: "4iiii Precision 3 Left Power Meter"
+
+  tacx-neo-2t: "Tacx NEO 2T smart"
+
+rules:
+
+  - domane:
+      frame: trek-domane-sl5
+      wheel-front: bontrager-paradigm-sl-front
+      wheel-rear: bontrager-paradigm-sl-rear
+      tire-front: bontrager-r3-hard-case-lite-tlr-1
+      tire-rear: bontrager-r3-hard-case-lite-tlr-2
+      chain: shimano-105-hg601
+      pedals: shimano-pd-t8000
+      cassette: shimano-cs-r7000-11-34
+
+  - "#VirtualRide":
+      wheel-front: placeholder-wheel-front
+      tire-front: placeholder-tire-front
+
+  - since: 2022-05-06
+    domane:
+      left-crank-arm: 4iiii-precision-3
+
+  - since: 2022-05-10
+    domane:
+      tire-rear: panaracer-gravelking-slick-35
+
+  - since: 2022-07-03
+    domane:
+      tire-rear: continental-gp5000
+
+  - since: 2022-07-29
+    domane:
+      wheel-front: zipp-303-firecrest-front
+      wheel-rear: zipp-303-firecrest-rear
+      tire-front: vittoria-corsa-next-1
+      tire-rear: vittoria-corsa-next-2
+      cassette: shimano-cs-r7000-11-30
+
+  - since: 2022-10-08
+    "#VirtualRide":
+      wheel-front: placeholder-wheel-front
+      tire-front: placeholder-tire-front
+      wheel-rear: tacx-neo-2t
+      tire-rear: placeholder-tire-rear
+      cassette: shimano-cs-r7000-11-34
