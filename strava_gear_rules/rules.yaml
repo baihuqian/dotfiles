@@ -16,6 +16,8 @@ components:
   vittoria-corsa-next-1: "Vittoria Corsa N.EXT"
   vittoria-corsa-next-2: "Vittoria Corsa N.EXT"
 
+  vittoria-zaffiro-pro: "Vittoria Zaffiro Pro"
+
   shimano-105-hg601: "Shimano 105 HG601 Chain"
 
   shimano-pd-t8000: "Shimano PD-T8000 Pedals"
@@ -27,7 +29,46 @@ components:
 
   tacx-neo-2t: "Tacx NEO 2T smart"
 
+  muc-off-dry-lube: "Muc-Off Dry Lube"
+  finish-line-ceramic-dry-lube: "Finish Line Ceramic Dry Lube"
+
 rules:
+
+  - since: 2022-11-02
+    domane:
+      chain-lube: muc-off-dry-lube
+
+  - since: 2022-10-18
+    "#VirtualRide":
+      tire-front: vittoria-zaffiro-pro
+
+  - since: 2022-10-08
+    "#VirtualRide":
+      wheel-front: bontrager-paradigm-sl-front
+      tire-front: trainer-placeholder-tire-front
+      wheel-rear: tacx-neo-2t
+      tire-rear: trainer-placeholder-tire-rear
+      cassette: shimano-cs-r7000-11-34
+
+  - since: 2022-07-29
+    domane:
+      wheel-front: zipp-303-firecrest-front
+      wheel-rear: zipp-303-firecrest-rear
+      tire-front: vittoria-corsa-next-1
+      tire-rear: vittoria-corsa-next-2
+      cassette: shimano-cs-r7000-11-30
+
+  - since: 2022-07-03
+    domane:
+      tire-rear: continental-gp5000
+
+  - since: 2022-05-10
+    domane:
+      tire-rear: panaracer-gravelking-slick-35
+
+  - since: 2022-05-06
+    domane:
+      left-crank-arm: 4iiii-precision-3
 
   - domane:
       frame: trek-domane-sl5
@@ -40,33 +81,5 @@ rules:
       cassette: shimano-cs-r7000-11-34
 
   - "#VirtualRide":
-      wheel-front: placeholder-wheel-front
-      tire-front: placeholder-tire-front
-
-  - since: 2022-05-06
-    domane:
-      left-crank-arm: 4iiii-precision-3
-
-  - since: 2022-05-10
-    domane:
-      tire-rear: panaracer-gravelking-slick-35
-
-  - since: 2022-07-03
-    domane:
-      tire-rear: continental-gp5000
-
-  - since: 2022-07-29
-    domane:
-      wheel-front: zipp-303-firecrest-front
-      wheel-rear: zipp-303-firecrest-rear
-      tire-front: vittoria-corsa-next-1
-      tire-rear: vittoria-corsa-next-2
-      cassette: shimano-cs-r7000-11-30
-
-  - since: 2022-10-08
-    "#VirtualRide":
-      wheel-front: placeholder-wheel-front
-      tire-front: placeholder-tire-front
-      wheel-rear: tacx-neo-2t
-      tire-rear: placeholder-tire-rear
-      cassette: shimano-cs-r7000-11-34
+      wheel-front: bontrager-paradigm-sl-front
+      tire-front: trainer-placeholder-tire-front
