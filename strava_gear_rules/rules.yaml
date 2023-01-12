@@ -18,9 +18,14 @@ components:
 
   vittoria-zaffiro-pro: "Vittoria Zaffiro Pro"
 
-  shimano-105-hg601: "Shimano 105 HG601 Chain"
+  shimano-cn-hg601-11: "Shimano 105 HG601 11 Speed Chain"
+  shimano-cn-hg701-11: "Shimano Ultegra HG701 11 Speed Chain"
 
   shimano-pd-t8000: "Shimano PD-T8000 Pedals"
+  shimano-spd-sh56-1: "Shimano SPD SH56 Cleat"
+  shimano-spd-sh56-2: "Shimano SPD SH56 Cleat"
+  bontrager-evoke-mountain-bike-shoe: "Bontrager Evoke Mountain Bike Shoe"
+  shimano-rx8-shoe: "Shimano RX8 (SH-RX801) SPD Shoe"
 
   shimano-cs-r7000-11-34: "Shimano CS-R7000 11-34 Cassette"
   shimano-cs-r7000-11-30: "Shimano CS-R7000 11-30 Cassette"
@@ -29,14 +34,21 @@ components:
 
   tacx-neo-2t: "Tacx NEO 2T smart"
 
-  muc-off-dry-lube: "Muc-Off Dry Lube"
-  finish-line-ceramic-dry-lube: "Finish Line Ceramic Dry Lube"
+  dry-lube: "Dry Lube"
 
 rules:
-
-  - since: 2022-11-02
+  - since: 2023-01-07
     domane:
-      chain-lube: muc-off-dry-lube
+      shoe: shimano-rx8-shoe
+      cleat: shimano-spd-sh56-2
+
+  - since: 2023-01-05
+    domane:
+      chain-lube: dry-lube
+
+  - since: 2022-12-15
+    domane:
+      chain: shimano-cn-hg701-11
 
   - since: 2022-10-18
     "#VirtualRide":
@@ -70,13 +82,18 @@ rules:
     domane:
       left-crank-arm: 4iiii-precision-3
 
+  - since: 2022-01-13
+    domane:
+      shoe: bontrager-evoke-mountain-bike-shoe
+      cleat: shimano-spd-sh56-1
+
   - domane:
       frame: trek-domane-sl5
       wheel-front: bontrager-paradigm-sl-front
       wheel-rear: bontrager-paradigm-sl-rear
       tire-front: bontrager-r3-hard-case-lite-tlr-1
       tire-rear: bontrager-r3-hard-case-lite-tlr-2
-      chain: shimano-105-hg601
+      chain: shimano-cn-hg601-11
       pedals: shimano-pd-t8000
       cassette: shimano-cs-r7000-11-34
 
