@@ -141,13 +141,6 @@ epochdate() { date -ud "$@" +%s }
 
 humandate() { date -ud @"$@" }
 
-# tmux integration with iTerm
-alias tmux='tmux -CC'
-alias ta='tmux -CC attach'
-
-# Autojump
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-#
 # configure fuzzy autocomplete on tab
 zstyle ':completion:*' matcher-list '' \
 'm:{a-z\-}={A-Z\_}' \
@@ -156,7 +149,14 @@ zstyle ':completion:*' matcher-list '' \
 
 # OS X specific
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    plugins=(aws brew osx autojump vi-mode zsh-syntax-highlighting)
+   plugins=(aws brew osx autojump vi-mode zsh-syntax-highlighting)
+
+  # tmux integration with iTerm
+  alias tmux='tmux -CC'
+  alias ta='tmux -CC attach'
+
+  # Autojump
+  [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
     # Path with brew installation
     export PATH="/usr/local/opt/ruby@2.7/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -173,6 +173,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     hash -d dow=~/Downloads
 fi # end of OS X specific
 
+# Linux specific
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  #rbenv
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+
+  # autojump
+  . /usr/share/autojump/autojump.sh
+
+  alias ssh2ec2='ssh -i ~/.ssh/unifi-controller.pem ubuntu@18.217.9.248'
+  alias ssh62ec2='ssh -i ~/.ssh/unifi-controller.pem ubuntu@2600:1f16:67b:a300:f77a:173:3ea2:b5d1'
+fi
 # Stuff comes with oh-my-zsh
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -225,12 +237,8 @@ fi # end of OS X specific
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 source $ZSH/oh-my-zsh.sh
-export PATH=$PATH:/usr/local/bin  # MIDWAY PATH: Path changed for ssh
 
-alias ssh2ubuntu='ssh ubuntu@192.168.10.2'
-alias ssh2ec2='ssh -i ~dow/unifi-controller.pem ubuntu@18.217.9.248'
-alias ssh62ec2='ssh -i ~dow/unifi-controller.pem ubuntu@2600:1f16:67b:a300:f77a:173:3ea2:b5d1'
+# pipx, midway
+export PATH="$PATH:$HOME/.local/bin:/usr/local/bin"
 
 
-# Created by `pipx` on 2022-10-08 01:07:36
-export PATH="$PATH:/Users/baihu/.local/bin"
