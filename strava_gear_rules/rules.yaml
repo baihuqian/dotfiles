@@ -4,10 +4,10 @@ aliases:
 components:
   trek-domane-sl5: "Trek Domane SL5 Gen3"
 
-  bontrager-paradigm-sl-front: "Bontrager Paradigm SL"
-  bontrager-paradigm-sl-rear: "Bontrager Paradigm SL"
-  zipp-303-firecrest-front: "Zipp 303 Firecrest"
-  zipp-303-firecrest-rear: "Zipp 303 Firecrest"
+  bontrager-paradigm-sl-front: "Bontrager Paradigm SL (Front)"
+  bontrager-paradigm-sl-rear: "Bontrager Paradigm SL (Rear)"
+  zipp-303-firecrest-front: "Zipp 303 Firecrest (Front)"
+  zipp-303-firecrest-rear: "Zipp 303 Firecrest (Rear)"
 
   bontrager-r3-hard-case-lite-tlr-1: "Bontrager R3 Hard Case Lite TLR"
   bontrager-r3-hard-case-lite-tlr-2: "Bontrager R3 Hard Case Lite TLR"
@@ -31,20 +31,28 @@ components:
   shimano-cs-r7000-11-30: "Shimano CS-R7000 11-30 Cassette"
 
   4iiii-precision-3: "4iiii Precision 3 Left Power Meter"
+  bontrager-duotrap-s: "Bontrager DuoTrap S Digital Sensor"
 
   tacx-neo-2t: "Tacx NEO 2T smart"
 
   dry-lube: "Dry Lube"
 
 rules:
+  - since: 2023-02-06
+    domane:
+      chain-lube: dry-lube
+
+  - since: 2023-02-13
+    domane:
+      power-meter-battery: cr2032-3
+
   - since: 2023-01-07
     domane:
       shoe: shimano-rx8-shoe
       cleat: shimano-spd-sh56-2
-
-  - since: 2023-01-05
-    domane:
-      chain-lube: dry-lube
+    "#b":
+      shoe: bontrager-evoke-mountain-bike-shoe
+      cleat: shimano-spd-sh56-1
 
   - since: 2022-12-15
     domane:
@@ -61,6 +69,8 @@ rules:
       wheel-rear: tacx-neo-2t
       tire-rear: trainer-placeholder-tire-rear
       cassette: shimano-cs-r7000-11-34
+      speed-sensor: tacx-neo-2t-speed-placeholder
+      power-meter: tacx-neo-2t-power-placeholder
 
   - since: 2022-07-29
     domane:
@@ -80,7 +90,13 @@ rules:
 
   - since: 2022-05-06
     domane:
-      left-crank-arm: 4iiii-precision-3
+      power-meter: 4iiii-precision-3
+      power-meter-battery: cr2032-2
+
+  - since: 2022-03-09
+    domane:
+      speed-sensor: bontrager-duotrap-s
+      speed-sensor-battery: cr2032-1
 
   - since: 2022-01-13
     domane:
@@ -100,3 +116,7 @@ rules:
   - "#VirtualRide":
       wheel-front: bontrager-paradigm-sl-front
       tire-front: trainer-placeholder-tire-front
+      speed-sensor: tacx-flow-speed-placeholder
+      power-meter: tacx-flow-power-placeholder
+      speed-sensor-battery: cr2032-speed-placeholder
+      power-meter-battery: cr2032-power-placeholder
