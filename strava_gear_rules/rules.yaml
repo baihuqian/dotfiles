@@ -15,15 +15,20 @@ components:
   continental-gp5000: "Continental GP5000"
   vittoria-corsa-next-1: "Vittoria Corsa N.EXT"
   vittoria-corsa-next-2: "Vittoria Corsa N.EXT"
-
   vittoria-zaffiro-pro: "Vittoria Zaffiro Pro"
+
+  bontrager-verse-comp-saddle: "Bontrager Verse Comp Bike Saddle"
+  bontrager-verse-elite-saddle: "Bontrager Verse Short Elite Bike Saddle"
 
   shimano-cn-hg601-11: "Shimano 105 HG601 11 Speed Chain"
   shimano-cn-hg701-11: "Shimano Ultegra HG701 11 Speed Chain"
 
   shimano-pd-t8000: "Shimano PD-T8000 Pedals"
+  look-x-track-race-carbon: "Look X-Track Race Carbon Pedals"
+
   shimano-spd-sh56-1: "Shimano SPD SH56 Cleat"
   shimano-spd-sh56-2: "Shimano SPD SH56 Cleat"
+
   bontrager-evoke-mountain-bike-shoe: "Bontrager Evoke Mountain Bike Shoe"
   shimano-rx8-shoe: "Shimano RX8 (SH-RX801) SPD Shoe"
 
@@ -38,9 +43,21 @@ components:
   dry-lube: "Dry Lube"
 
 rules:
-  - since: 2023-02-06
+  - since: 2023-04-04
     domane:
       chain-lube: dry-lube
+
+  - since: 2023-04-04
+    domane:
+      tubeless-sealant: muc-off-sealant
+        
+  - since: 2023-04-04
+    domane:
+      pedals: look-x-track-race-carbon
+  
+  - since: 2023-03-25
+    domane:
+      saddle: bontrager-verse-elite-saddle
 
   - since: 2023-02-13
     domane:
@@ -79,6 +96,7 @@ rules:
       tire-front: vittoria-corsa-next-1
       tire-rear: vittoria-corsa-next-2
       cassette: shimano-cs-r7000-11-30
+      tubeless-sealant: muc-off-sealant
 
   - since: 2022-07-03
     domane:
@@ -109,9 +127,11 @@ rules:
       wheel-rear: bontrager-paradigm-sl-rear
       tire-front: bontrager-r3-hard-case-lite-tlr-1
       tire-rear: bontrager-r3-hard-case-lite-tlr-2
+      tubeless-sealant: bontrager-sealant
       chain: shimano-cn-hg601-11
       pedals: shimano-pd-t8000
       cassette: shimano-cs-r7000-11-34
+      saddle: bontrager-verse-comp-saddle
 
   - "#VirtualRide":
       wheel-front: bontrager-paradigm-sl-front
@@ -120,3 +140,4 @@ rules:
       power-meter: tacx-flow-power-placeholder
       speed-sensor-battery: cr2032-speed-placeholder
       power-meter-battery: cr2032-power-placeholder
+      tubeless-sealant: placeholder-sealant

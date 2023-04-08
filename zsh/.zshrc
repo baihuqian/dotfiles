@@ -184,6 +184,10 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   alias ssh2ec2='ssh -i ~/.ssh/unifi-controller.pem ubuntu@18.217.9.248'
   alias ssh62ec2='ssh -i ~/.ssh/unifi-controller.pem ubuntu@2600:1f16:67b:a300:f77a:173:3ea2:b5d1'
+
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
 fi
 # Stuff comes with oh-my-zsh
 # Uncomment the following line to use case-sensitive completion.
