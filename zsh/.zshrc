@@ -158,9 +158,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   # Autojump
   [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-    # Path with brew installation
-    export PATH="/usr/local/opt/ruby@2.7/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/ruby/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-    export MANPATH="usr/local/opt/coreutils/libexec/gnuman:/usr/local/man:$MANPATH"
+  # Path with brew installation
+  export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$(brew --prefix)/bin:$(brew --prefix)sbin:/usr/bin:/bin:/usr/sbin:/sbin"
+  export MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:$(brew --prefix)/man:$MANPATH"
+
+  # rbenv
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - zsh)"
 
     # Eject all mounted physical disks on OSX
     # Same as Alfred ejectall command
