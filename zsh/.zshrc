@@ -25,6 +25,7 @@ ZSH_THEME="robbyrussell"
     # autojump: use j key to jump anywhere
     # zsh-syntax-highlighting: highlight shell syntax
     # Install zsh-syntax-highlighting:
+    # If we want to activate it using oh-my-zsh plugin, don't install it with brew
     # cd ~/.oh-my-zsh/custom/plugins/; git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
     # Use `ESC` or `CTRL-[` to enter `Normal mode`.
     #
@@ -149,7 +150,7 @@ zstyle ':completion:*' matcher-list '' \
 
 # OS X specific
 if [[ "$OSTYPE" == "darwin"* ]]; then
-   plugins=(aws brew osx autojump vi-mode zsh-syntax-highlighting)
+   plugins=(aws brew  autojump vi-mode zsh-syntax-highlighting)
 
   # tmux integration with iTerm
   alias tmux='tmux -CC'
@@ -175,6 +176,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Hashes
     hash -d doc=~/Documents
     hash -d dow=~/Downloads
+
 fi # end of OS X specific
 
 # Linux specific

@@ -37,27 +37,36 @@ components:
 
   4iiii-precision-3: "4iiii Precision 3 Left Power Meter"
   bontrager-duotrap-s: "Bontrager DuoTrap S Digital Sensor"
+  wahoo-elemnt-bolt-v2: "Wahoo Elemnt Bolt"
+  garmin-varia-rtl515: "Garmin Varia RTL515"
 
   tacx-neo-2t: "Tacx NEO 2T smart"
 
-  dry-lube: "Dry Lube"
+  muc-off-dry-lube: "Muc-Off Dry Lube"
+  ceramic-dry-lube: "FinishLine Ceramic Wax Lube"
+  muc-off-sealant: "Muc-Off Tubeless Sealant"
 
 rules:
-  - since: 2023-04-04
+  - since: 2023-04-18
     domane:
-      chain-lube: dry-lube
+      chain-lube: muc-off-dry-lube
 
   - since: 2023-04-04
     domane:
       tubeless-sealant: muc-off-sealant
-        
+
   - since: 2023-04-04
     domane:
       pedals: look-x-track-race-carbon
-  
+
   - since: 2023-03-25
     domane:
       saddle: bontrager-verse-elite-saddle
+
+  - since: 2023-03-01
+    doname:
+      head-unit: wahoo-elemnt-bolt-v2
+      tail-light: garmin-varia-rtl515
 
   - since: 2023-02-13
     domane:
@@ -96,7 +105,6 @@ rules:
       tire-front: vittoria-corsa-next-1
       tire-rear: vittoria-corsa-next-2
       cassette: shimano-cs-r7000-11-30
-      tubeless-sealant: muc-off-sealant
 
   - since: 2022-07-03
     domane:
@@ -127,7 +135,6 @@ rules:
       wheel-rear: bontrager-paradigm-sl-rear
       tire-front: bontrager-r3-hard-case-lite-tlr-1
       tire-rear: bontrager-r3-hard-case-lite-tlr-2
-      tubeless-sealant: bontrager-sealant
       chain: shimano-cn-hg601-11
       pedals: shimano-pd-t8000
       cassette: shimano-cs-r7000-11-34
