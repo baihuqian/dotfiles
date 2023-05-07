@@ -38,6 +38,7 @@ components:
   4iiii-precision-3: "4iiii Precision 3 Left Power Meter"
   bontrager-duotrap-s: "Bontrager DuoTrap S Digital Sensor"
   wahoo-elemnt-bolt-v2: "Wahoo Elemnt Bolt"
+  wahoo-tickr: "Wahoo Tickr Heart Rate Monitor"
   garmin-varia-rtl515: "Garmin Varia RTL515"
 
   tacx-neo-2t: "Tacx NEO 2T smart"
@@ -47,7 +48,7 @@ components:
   muc-off-sealant: "Muc-Off Tubeless Sealant"
 
 rules:
-  - since: 2023-04-18
+  - since: 2023-05-07
     domane:
       chain-lube: muc-off-dry-lube
 
@@ -64,8 +65,9 @@ rules:
       saddle: bontrager-verse-elite-saddle
 
   - since: 2023-03-01
-    doname:
+    domane:
       head-unit: wahoo-elemnt-bolt-v2
+      heart-rate-monitor: wahoo-tickr
       tail-light: garmin-varia-rtl515
 
   - since: 2023-02-13
@@ -97,6 +99,7 @@ rules:
       cassette: shimano-cs-r7000-11-34
       speed-sensor: tacx-neo-2t-speed-placeholder
       power-meter: tacx-neo-2t-power-placeholder
+      tail-light: placeholder-tail-light
 
   - since: 2022-07-29
     domane:
@@ -139,6 +142,8 @@ rules:
       pedals: shimano-pd-t8000
       cassette: shimano-cs-r7000-11-34
       saddle: bontrager-verse-comp-saddle
+      head-unit: iphone
+      heart-rate-monitor: apple-watch
 
   - "#VirtualRide":
       wheel-front: bontrager-paradigm-sl-front
@@ -148,3 +153,5 @@ rules:
       speed-sensor-battery: cr2032-speed-placeholder
       power-meter-battery: cr2032-power-placeholder
       tubeless-sealant: placeholder-sealant
+      head-unit: iphone
+      heart-rate-monitor: apple-watch
