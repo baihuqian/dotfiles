@@ -167,16 +167,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init - zsh)"
 
-    # Eject all mounted physical disks on OSX
-    # Same as Alfred ejectall command
-    function ejectall() {
-        osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
-    }
+  # Eject all mounted physical disks on OSX
+  # Same as Alfred ejectall command
+  function ejectall() {
+      osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'
+  }
 
-    # Hashes
-    hash -d doc=~/Documents
-    hash -d dow=~/Downloads
+  # Hashes
+  hash -d doc=~/Documents
+  hash -d dow=~/Downloads
 
+  alias ssh2ec2='ssh -i ~/.ssh/unifi-controller.pem ubuntu@18.217.9.248'
+  alias ssh62ec2='ssh -i ~/.ssh/unifi-controller.pem ubuntu@2600:1f16:67b:a300:f77a:173:3ea2:b5d1'
 fi # end of OS X specific
 
 # Linux specific

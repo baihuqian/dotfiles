@@ -1,5 +1,6 @@
 aliases:
   domane: b9758455
+  telera: b4044695
 
 components:
   trek-domane-sl5: "Trek Domane SL5 Gen3"
@@ -48,9 +49,13 @@ components:
   muc-off-sealant: "Muc-Off Tubeless Sealant"
 
 rules:
-  - since: 2023-05-07
+  - since: 2023-06-03
     domane:
       chain-lube: muc-off-dry-lube
+
+  - since: 2023-05-19
+    telera:
+      pedals: shimano-pd-t8000
 
   - since: 2023-04-04
     domane:
@@ -63,6 +68,8 @@ rules:
   - since: 2023-03-25
     domane:
       saddle: bontrager-verse-elite-saddle
+    telera:
+      saddle: bontrager-verse-comp-saddle
 
   - since: 2023-03-01
     domane:
@@ -153,5 +160,11 @@ rules:
       speed-sensor-battery: cr2032-speed-placeholder
       power-meter-battery: cr2032-power-placeholder
       tubeless-sealant: placeholder-sealant
+      head-unit: iphone
+      heart-rate-monitor: apple-watch
+
+  - telera:
+      saddle: telera-original-saddle
+      pedals: telera-original-pedals
       head-unit: iphone
       heart-rate-monitor: apple-watch
