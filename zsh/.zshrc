@@ -184,7 +184,7 @@ fi # end of OS X specific
 # Linux specific
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   #rbenv
-  export PATH="$HOME/.rbenv/bin:$PATH"
+  export PATH="$HOME/.rbenv/bin:$HOME/.cargo/bin:$PATH"
   eval "$(rbenv init -)"
 
   # autojump
