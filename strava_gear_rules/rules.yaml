@@ -49,9 +49,9 @@ components:
   muc-off-sealant: "Muc-Off Tubeless Sealant"
 
 rules:
-  - since: 2023-06-03
+  - since: 2023-07-30
     domane:
-      chain-lube: muc-off-dry-lube
+      chain-lube: ceramic-dry-lube
 
   - since: 2023-05-19
     telera:
