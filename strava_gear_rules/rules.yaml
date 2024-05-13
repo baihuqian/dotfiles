@@ -1,9 +1,12 @@
 aliases:
   domane: b9758455
   telera: b4044695
+  fx3: b14270240
 
 components:
   trek-domane-sl5: "Trek Domane SL5 Gen3"
+  trek-fx3: "Trek FX3 Disc"
+  burley-honey-bee: "Burley Honey Bee Trailer & Stroller"
 
   bontrager-paradigm-sl-front: "Bontrager Paradigm SL (Front)"
   bontrager-paradigm-sl-rear: "Bontrager Paradigm SL (Rear)"
@@ -16,10 +19,17 @@ components:
   continental-gp5000: "Continental GP5000"
   vittoria-corsa-next-1: "Vittoria Corsa N.EXT"
   vittoria-corsa-next-2: "Vittoria Corsa N.EXT"
+  vittoria-corsa-next-3: "Vittoria Corsa N.EXT"
   vittoria-zaffiro-pro: "Vittoria Zaffiro Pro"
 
   bontrager-verse-comp-saddle: "Bontrager Verse Comp Bike Saddle"
   bontrager-verse-elite-saddle: "Bontrager Verse Short Elite Bike Saddle"
+
+  bontrager-comp-vr-s: "Bontrager Comp VR-S, alloy, 31.8mm, 81mm reach, 118mm drop, 40cm width"
+  fsa-omega-compact-bar: "FSA Omega Compact Alloy Handlebar, 38cm width"
+
+  bontrager-supertack-perf-tape: "Bontrager Supertack Perf tape"
+  brooks-cambium-ruber-tape: "Brooks Cambium Rubber Bar Tape"
 
   shimano-cn-hg601-11: "Shimano 105 HG601 11 Speed Chain"
   shimano-cn-hg701-11: "Shimano Ultegra HG701 11 Speed Chain"
@@ -41,23 +51,60 @@ components:
   wahoo-elemnt-bolt-v2: "Wahoo Elemnt Bolt"
   wahoo-tickr: "Wahoo Tickr Heart Rate Monitor"
   garmin-varia-rtl515: "Garmin Varia RTL515"
+  cycplus-speed-sensor: "CYCPLUS Speed Sensor"
 
-  tacx-neo-2t: "Tacx NEO 2T smart"
+  tacx-neo-2t-1: "Tacx NEO 2T smart"
+  tacx-neo-2t-2: "Tacx NEO 2T smart"
+  tacx-flow-power-sensor: "Tacx Flow"
 
   muc-off-dry-lube: "Muc-Off Dry Lube"
   ceramic-dry-lube: "FinishLine Ceramic Wax Lube"
   muc-off-sealant: "Muc-Off Tubeless Sealant"
 
 rules:
-  - since: 2023-07-30
+  - since: 2024-05-04
     domane:
       chain-lube: ceramic-dry-lube
+
+  - since: 2024-05-11
+    telera:
+      trailer: null
+    fx3:
+      trailer: burley-honey-bee
+
+  - fx3:
+      frame: trek-fx3
+      speed-sensor: bontrager-duotrap-s
+      speed-sensor-battery: duotrap-battery-2
+
+  - since: 2024-04-10
+    domane:
+      tire-rear: vittoria-corsa-next-3
+
+  - since: 2024-04-09T13:30
+    domane:
+      handlebar: fsa-omega-compact-bar
+      bar-tape: brooks-cambium-ruber-tape
+
+  - since: 2024-02-28
+    domane:
+      speed-sensor: cycplus-speed-sensor
+      speed-sensor-battery: cycplus-battery-1
+
+  - since: 2024-02-10
+    domane:
+      speed-sensor: null
+      speed-sensor-battery: null
+
+  - since: 2024-01-02
+    "#type=VirtualRide":
+      wheel-rear: tacx-neo-2t-2
 
   - since: 2023-05-19
     telera:
       pedals: shimano-pd-t8000
 
-  - since: 2023-04-04
+  - since: 2024-02-18
     domane:
       tubeless-sealant: muc-off-sealant
 
@@ -79,7 +126,7 @@ rules:
 
   - since: 2023-02-13
     domane:
-      power-meter-battery: cr2032-3
+      power-meter-battery: 4iiii-battery-2
 
   - since: 2023-01-07
     domane:
@@ -94,20 +141,24 @@ rules:
       chain: shimano-cn-hg701-11
 
   - since: 2022-10-18
-    "#VirtualRide":
+    "#type=VirtualRide":
       tire-front: vittoria-zaffiro-pro
 
   - since: 2022-10-08
-    "#VirtualRide":
+    "#type=VirtualRide":
       wheel-front: bontrager-paradigm-sl-front
       tire-front: trainer-placeholder-tire-front
-      wheel-rear: tacx-neo-2t
+      wheel-rear: tacx-neo-2t-1
       tire-rear: trainer-placeholder-tire-rear
       cassette: shimano-cs-r7000-11-34
       speed-sensor: tacx-neo-2t-speed-placeholder
       power-meter: tacx-neo-2t-power-placeholder
       tail-light: placeholder-tail-light
 
+  - since: 2022-08-15
+    telera:
+      trailer: burley-honey-bee
+      
   - since: 2022-07-29
     domane:
       wheel-front: zipp-303-firecrest-front
@@ -127,12 +178,12 @@ rules:
   - since: 2022-05-06
     domane:
       power-meter: 4iiii-precision-3
-      power-meter-battery: cr2032-2
+      power-meter-battery: 4iiii-battery-1
 
   - since: 2022-03-09
     domane:
       speed-sensor: bontrager-duotrap-s
-      speed-sensor-battery: cr2032-1
+      speed-sensor-battery: duotrap-battery-1
 
   - since: 2022-01-13
     domane:
@@ -151,12 +202,14 @@ rules:
       saddle: bontrager-verse-comp-saddle
       head-unit: iphone
       heart-rate-monitor: apple-watch
+      handlebar: bontrager-comp-vr-s
+      bar-tape: bontrager-supertack-perf-tape
 
-  - "#VirtualRide":
+  - "#type=VirtualRide":
       wheel-front: bontrager-paradigm-sl-front
       tire-front: trainer-placeholder-tire-front
       speed-sensor: tacx-flow-speed-placeholder
-      power-meter: tacx-flow-power-placeholder
+      power-meter: tacx-flow-power-sensor
       speed-sensor-battery: cr2032-speed-placeholder
       power-meter-battery: cr2032-power-placeholder
       tubeless-sealant: placeholder-sealant
